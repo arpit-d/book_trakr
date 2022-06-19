@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "155325932773",
+    "project_id": "book-trakr-9e151",
+    "storage_bucket": "book-trakr-9e151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155325932773:android:dcb4bb21eac9321879200c",
+        "android_client_info": {
+          "package_name": "com.and.book_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155325932773-362m5bt8qa1qlus3v1hielvpjdflavj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.and.book_tracker",
+            "certificate_hash": "92820c3dbcac7cc1a6d5d3c2dd7af61dde6d217d"
+          }
+        },
+        {
+          "client_id": "155325932773-2242ek9mi7lnlu8p773gjku5ijfl6fe5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeX__PHMlL-ZbegJ-m7aLpuTqGI_R7gmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155325932773-2242ek9mi7lnlu8p773gjku5ijfl6fe5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
