@@ -86,7 +86,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
-            labelText: 'email',
+            labelText: 'Email',
             helperText: '',
           ),
         );
@@ -111,7 +111,7 @@ class _PasswordInput extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             helperText: '',
-            labelText: 'password',
+            labelText: 'Password',
           ),
         );
       },

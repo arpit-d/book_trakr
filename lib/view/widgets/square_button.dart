@@ -15,16 +15,11 @@ class SquareButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       child: SizedBox(
-        height: 52,
+        height: 48,
         width: double.infinity,
         child: Center(
           child: Text(
             title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              letterSpacing: 1.4,
-              fontSize: 24,
-            ),
           ),
         ),
       ),

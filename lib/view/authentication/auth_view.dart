@@ -34,15 +34,7 @@ class _AuthViewState extends State<AuthView> with TickerProviderStateMixin {
           alignment: Alignment.centerLeft,
           child: TabBar(
             isScrollable: true,
-            labelStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.1,
-              fontSize: 22,
-            ),
-            unselectedLabelStyle: const TextStyle(color: Colors.grey),
             indicatorColor: Theme.of(context).primaryColor,
-            indicatorSize: TabBarIndicatorSize.label,
             controller: _tabController,
             tabs: const [
               Tab(
