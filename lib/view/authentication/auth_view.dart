@@ -52,7 +52,7 @@ class _AuthViewState extends State<AuthView> with TickerProviderStateMixin {
         ),
       ),
       body: TabBarView(
-        controller: _tabController,
+        controller: _tabController!,
         children: [
           BlocProvider(
             create: (_) => LoginCubit(context.read<AuthRepository>()),

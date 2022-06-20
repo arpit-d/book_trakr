@@ -20,6 +20,9 @@ class SquareButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
       ),
