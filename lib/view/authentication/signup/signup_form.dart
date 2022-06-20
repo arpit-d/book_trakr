@@ -48,12 +48,12 @@ class _EmailInput extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           onChanged: (email) => context.read<SignUpCubit>().emailChanged(email),
+          validator: (_) => state.isEmailValid ? null : 'Invalid Email',
           keyboardType: TextInputType.emailAddress,
-          autovalidateMode: AutovalidateMode.disabled,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             labelText: 'email',
             helperText: '',
-            errorText: 'Invalid Email',
           ),
         );
       },
@@ -67,15 +67,15 @@ class _PasswordInput extends StatelessWidget {
     return BlocBuilder<SignUpCubit, SignUpState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
-        return TextField(
-          key: const Key('signUpForm_passwordInput_textField'),
+        return TextFormField(
           onChanged: (password) =>
               context.read<SignUpCubit>().passwordChanged(password),
+          validator: (_) => state.isPasswordValid ? null : 'Invalid Password',
           obscureText: true,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             labelText: 'password',
             helperText: '',
-            errorText: 'invalid password',
           ),
         );
       },
@@ -91,16 +91,17 @@ class _ConfirmPasswordInput extends StatelessWidget {
           previous.password != current.password ||
           previous.confirmedPassword != current.confirmedPassword,
       builder: (context, state) {
-        return TextField(
-          key: const Key('signUpForm_confirmedPasswordInput_textField'),
+        return TextFormField(
           onChanged: (confirmPassword) => context
               .read<SignUpCubit>()
               .confirmedPasswordChanged(confirmPassword),
+          validator: (_) =>
+              state.isConfirmedPasswordValid ? null : 'Passwords do not match',
           obscureText: true,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             labelText: 'confirm password',
             helperText: '',
-            errorText: 'invalid password',
           ),
         );
       },

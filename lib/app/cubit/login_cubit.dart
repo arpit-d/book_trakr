@@ -11,27 +11,18 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this._authenticationRepository) : super(const LoginState());
 
   final AuthRepository _authenticationRepository;
-  final RegExp _emailRegExp = RegExp(
-    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
-  );
-  final RegExp _passwordRegExp = RegExp(
-    r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$',
-  );
+
   void emailChanged(String newEmailValue) {
     emit(state.copyWith(
       email: newEmailValue,
-      password: state.password,
-      isEmailValid: _isEmailValid(newEmailValue),
-      isPasswordValid: state.isPasswordValid,
+      isEmailValid: Validators.validateEmail(newEmailValue),
     ));
   }
 
   void passwordChanged(String newPasswordValue) {
     emit(state.copyWith(
-      email: state.email,
       password: newPasswordValue,
-      isEmailValid: state.isEmailValid,
-      isPasswordValid: _isPasswordValid(newPasswordValue),
+      isPasswordValid: Validators.validatePassword(newPasswordValue),
     ));
   }
 
@@ -55,13 +46,5 @@ class LoginCubit extends Cubit<LoginState> {
       emit(state.copyWith(status: FormStatus.submissionFailure));
       emit(state.copyWith(status: FormStatus.initial));
     }
-  }
-
-  bool _isEmailValid(String email) {
-    return _emailRegExp.hasMatch(email);
-  }
-
-  bool _isPasswordValid(String password) {
-    return _passwordRegExp.hasMatch(password);
   }
 }
