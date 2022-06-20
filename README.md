@@ -1,6 +1,6 @@
 # book_tracker
 
-A new Flutter project.
+A Flutter app to help you keep track of the books you're reading, using BLoC as state management.
 
 ## Getting Started
 
