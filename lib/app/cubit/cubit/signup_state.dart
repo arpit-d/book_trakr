@@ -21,6 +21,9 @@ class SignUpState extends Equatable {
   final bool isPasswordValid;
   final bool isConfirmedPasswordValid;
 
+  bool get isFormValid =>
+      isEmailValid && (isPasswordValid && isConfirmedPasswordValid);
+
   @override
   List<Object> get props => [
         email,

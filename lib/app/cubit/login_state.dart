@@ -16,8 +16,6 @@ class LoginState extends Equatable {
   final FormStatus status;
   final String? errorMessage;
 
-  bool get isFormValid => isEmailValid && isPasswordValid;
-
   @override
   List<Object> get props =>
       [email, password, status, isEmailValid, isPasswordValid];

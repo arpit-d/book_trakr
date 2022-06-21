@@ -12,11 +12,20 @@ class LoginCubit extends Cubit<LoginState> {
 
   final AuthRepository _authenticationRepository;
 
+  void isFormValid() => emit(
+        state.copyWith(
+            status: state.isEmailValid && state.isPasswordValid
+                ? FormStatus.valid
+                : FormStatus.invalid),
+      );
+
   void emailChanged(String newEmailValue) {
-    emit(state.copyWith(
-      email: newEmailValue,
-      isEmailValid: Validators.validateEmail(newEmailValue),
-    ));
+    emit(
+      state.copyWith(
+        email: newEmailValue,
+        isEmailValid: Validators.validateEmail(newEmailValue),
+      ),
+    );
   }
 
   void passwordChanged(String newPasswordValue) {

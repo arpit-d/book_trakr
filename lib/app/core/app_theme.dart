@@ -42,7 +42,7 @@ class AppTheme {
             const ProgressIndicatorThemeData(color: AppColors.primaryColor),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            elevation: MaterialStateProperty.all<double>(2),
+            elevation: MaterialStateProperty.all<double>(0),
             textStyle: MaterialStateProperty.all<TextStyle>(
               const TextStyle(
                 letterSpacing: 1.6,
@@ -50,8 +50,6 @@ class AppTheme {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            backgroundColor:
-                MaterialStateProperty.all<Color>(AppColors.primaryColor),
           ),
         ),
         buttonTheme: ButtonThemeData(

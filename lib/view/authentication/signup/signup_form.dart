@@ -118,6 +118,7 @@ class _SignUpButton extends StatelessWidget {
         return state.status == FormStatus.submissionInProgress
             ? const CircularProgressIndicator()
             : SquareButton(
+                isDisabled: state.isFormValid ? true : true,
                 title: 'Sign Up',
                 onPressed: () =>
                     context.read<SignUpCubit>().signUpFormSubmitted(),

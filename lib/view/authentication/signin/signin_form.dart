@@ -108,6 +108,7 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (value) =>
               context.read<LoginCubit>().passwordChanged(value),
           keyboardType: TextInputType.visiblePassword,
+          obscureText: true,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             helperText: '',
@@ -128,6 +129,7 @@ class _LoginButton extends StatelessWidget {
         return state.status == FormStatus.submissionInProgress
             ? const CircularProgressIndicator()
             : SquareButton(
+                isDisabled: false,
                 title: 'Login',
                 onPressed: () => context.read<LoginCubit>().login(),
               );
