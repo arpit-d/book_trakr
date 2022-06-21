@@ -31,16 +31,18 @@ class SignInForm extends StatelessWidget {
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const _LoginHeader(),
-              const _EmailInput(),
-              const _PasswordInput(),
-              const SizedBox(height: 8),
-              _LoginButton()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const _LoginHeader(),
+                const _EmailInput(),
+                const _PasswordInput(),
+                const SizedBox(height: 16),
+                _LoginButton()
+              ],
+            ),
           ),
         ));
   }
@@ -86,7 +88,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
-            labelText: 'Email',
+            labelText: 'email',
             helperText: '',
           ),
         );
@@ -112,7 +114,7 @@ class _PasswordInput extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
             helperText: '',
-            labelText: 'Password',
+            labelText: 'password',
           ),
         );
       },

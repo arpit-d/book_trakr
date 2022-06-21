@@ -21,19 +21,20 @@ class SignUpForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _EmailInput(),
-            const SizedBox(height: 8),
-            _PasswordInput(),
-            const SizedBox(height: 8),
-            _ConfirmPasswordInput(),
-            const SizedBox(height: 8),
-            _SignUpButton(),
-          ],
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _EmailInput(),
+              _PasswordInput(),
+              _ConfirmPasswordInput(),
+              const SizedBox(height: 16),
+              _SignUpButton(),
+            ],
+          ),
         ),
       ),
     );
@@ -118,7 +119,7 @@ class _SignUpButton extends StatelessWidget {
         return state.status == FormStatus.submissionInProgress
             ? const CircularProgressIndicator()
             : SquareButton(
-                isDisabled: state.isFormValid ? true : true,
+                isDisabled: false,
                 title: 'Sign Up',
                 onPressed: () =>
                     context.read<SignUpCubit>().signUpFormSubmitted(),

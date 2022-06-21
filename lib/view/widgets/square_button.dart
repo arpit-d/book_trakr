@@ -19,9 +19,9 @@ class SquareButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: AppColors.primaryColor,
       ),
-      onPressed: isDisabled ? onPressed : null,
+      onPressed: onPressed,
       child: SizedBox(
-        height: 48,
+        height: 52,
         width: double.infinity,
         child: Center(
           child: Text(
