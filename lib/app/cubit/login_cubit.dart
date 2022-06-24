@@ -5,6 +5,8 @@ import 'package:book_tracker/data/repository/auth_repository.dart';
 import 'package:book_tracker/data/validators/validators.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../data/exceptions/auth_exceptions/google_login_exceptions.dart';
+
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -54,6 +56,22 @@ class LoginCubit extends Cubit<LoginState> {
     } catch (_) {
       emit(state.copyWith(status: FormStatus.submissionFailure));
       emit(state.copyWith(status: FormStatus.initial));
+    }
+  }
+
+  Future<void> logInWithGoogle() async {
+    try {
+      await _authenticationRepository.logInWithGoogle();
+      emit(state.copyWith(status: FormStatus.submissionSuccess));
+    } on LogInWithGoogleFailure catch (e) {
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormStatus.submissionFailure,
+        ),
+      );
+    } catch (_) {
+      emit(state.copyWith(status: FormStatus.submissionFailure));
     }
   }
 }

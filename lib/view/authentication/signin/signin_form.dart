@@ -35,12 +35,14 @@ class SignInForm extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
-              children: [
-                const _LoginHeader(),
-                const _EmailInput(),
-                const _PasswordInput(),
-                const SizedBox(height: 16),
-                _LoginButton()
+              children: const [
+                _LoginHeader(),
+                _EmailInput(),
+                _PasswordInput(),
+                SizedBox(height: 16),
+                _LoginButton(),
+                SizedBox(height: 16),
+                _GoogleButton()
               ],
             ),
           ),
@@ -123,6 +125,7 @@ class _PasswordInput extends StatelessWidget {
 }
 
 class _LoginButton extends StatelessWidget {
+  const _LoginButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
@@ -135,6 +138,35 @@ class _LoginButton extends StatelessWidget {
                 title: 'Login',
                 onPressed: () => context.read<LoginCubit>().login(),
               );
+
+        // ElevatedButton(
+        //     key: const Key('loginForm_continue_raisedButton'),
+        //     style: ElevatedButton.styleFrom(
+        //       shape: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(30),
+        //       ),
+        //       primary: const Color(0xFFFFD600),
+        //     ),
+        //     onPressed: () => context.read<LoginCubit>().login(),
+        //     child: const Text('LOGIN'),
+        //   );
+      },
+    );
+  }
+}
+
+class _GoogleButton extends StatelessWidget {
+  const _GoogleButton({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (previous, current) => previous.status != current.status,
+      builder: (context, state) {
+        return SquareButton(
+          isDisabled: false,
+          title: 'Login With Google',
+          onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
+        );
 
         // ElevatedButton(
         //     key: const Key('loginForm_continue_raisedButton'),
