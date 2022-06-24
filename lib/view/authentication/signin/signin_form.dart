@@ -4,6 +4,8 @@ import 'package:book_tracker/view/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/core/gaps.dart';
+
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
 
@@ -39,9 +41,9 @@ class SignInForm extends StatelessWidget {
                 _LoginHeader(),
                 _EmailInput(),
                 _PasswordInput(),
-                SizedBox(height: 16),
+                gapH16,
                 _LoginButton(),
-                SizedBox(height: 16),
+                gapH16,
                 _GoogleButton()
               ],
             ),
@@ -136,7 +138,9 @@ class _LoginButton extends StatelessWidget {
             : SquareButton(
                 isDisabled: false,
                 title: 'Login',
-                onPressed: () => context.read<LoginCubit>().login(),
+                onPressed: () => state.isEmailValid && state.isPasswordValid
+                    ? context.read<LoginCubit>().login()
+                    : null,
               );
 
         // ElevatedButton(

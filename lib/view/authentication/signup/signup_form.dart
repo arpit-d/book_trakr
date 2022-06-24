@@ -4,6 +4,8 @@ import 'package:book_tracker/view/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/core/gaps.dart';
+
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key? key}) : super(key: key);
 
@@ -27,11 +29,11 @@ class SignUpForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: const [
               _EmailInput(),
               _PasswordInput(),
               _ConfirmPasswordInput(),
-              const SizedBox(height: 16),
+              gapH16,
               _SignUpButton(),
             ],
           ),
@@ -42,6 +44,9 @@ class SignUpForm extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
+  const _EmailInput({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpCubit, SignUpState>(
@@ -63,6 +68,9 @@ class _EmailInput extends StatelessWidget {
 }
 
 class _PasswordInput extends StatelessWidget {
+  const _PasswordInput({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpCubit, SignUpState>(
@@ -85,6 +93,9 @@ class _PasswordInput extends StatelessWidget {
 }
 
 class _ConfirmPasswordInput extends StatelessWidget {
+  const _ConfirmPasswordInput({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpCubit, SignUpState>(
@@ -111,6 +122,9 @@ class _ConfirmPasswordInput extends StatelessWidget {
 }
 
 class _SignUpButton extends StatelessWidget {
+  const _SignUpButton({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpCubit, SignUpState>(
