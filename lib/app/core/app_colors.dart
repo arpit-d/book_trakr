@@ -19,4 +19,5 @@ class AppColors {
   static const primaryColor = Color(0xFF1DB954);
   static const redErrorColor = Color(0xFFFF0033);
   static const greyLabelColor = Color(0xFF2E3033);
+  static const darkGreyColor = Color(0xFF404040);
 }

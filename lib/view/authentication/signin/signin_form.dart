@@ -1,3 +1,4 @@
+import 'package:book_tracker/app/core/app_colors.dart';
 import 'package:book_tracker/app/cubit/login_cubit.dart';
 import 'package:book_tracker/constants/enums.dart';
 import 'package:book_tracker/view/widgets/square_button.dart';
@@ -31,24 +32,63 @@ class SignInForm extends StatelessWidget {
               );
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: const [
                 _LoginHeader(),
+                gapH16,
                 _EmailInput(),
                 _PasswordInput(),
                 gapH16,
                 _LoginButton(),
-                gapH16,
+                gapH20,
+                _DividerRow(),
+                gapH20,
                 _GoogleButton()
               ],
             ),
           ),
         ));
+  }
+}
+
+class _DividerRow extends StatelessWidget {
+  const _DividerRow({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: const [
+        Expanded(
+          child: Divider(
+            thickness: 1.1,
+            color: AppColors.darkGreyColor,
+          ),
+        ),
+        gapW8,
+        Text(
+          'OR',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.darkGreyColor,
+          ),
+        ),
+        gapW8,
+        Expanded(
+          child: Divider(
+            thickness: 1.1,
+            color: AppColors.darkGreyColor,
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -71,6 +111,7 @@ class _LoginHeader extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
+            color: AppColors.primaryColor,
           ),
         ),
       ],
@@ -131,7 +172,7 @@ class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
-      //   buildWhen: (previous, current) => previous.status != current.status,
+      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         // debugPrint("Is Email Valid? ${state.isEmailValid}");
         // debugPrint("Email: ${state.email}");
@@ -147,18 +188,6 @@ class _LoginButton extends StatelessWidget {
                     ? context.read<LoginCubit>().login()
                     : null,
               );
-
-        // ElevatedButton(
-        //     key: const Key('loginForm_continue_raisedButton'),
-        //     style: ElevatedButton.styleFrom(
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(30),
-        //       ),
-        //       primary: const Color(0xFFFFD600),
-        //     ),
-        //     onPressed: () => context.read<LoginCubit>().login(),
-        //     child: const Text('LOGIN'),
-        //   );
       },
     );
   }
@@ -174,21 +203,10 @@ class _GoogleButton extends StatelessWidget {
         return SquareButton(
           color: Colors.black,
           isDisabled: false,
+          buttonType: ButtonType.image,
           title: 'Login With Google',
           onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
         );
-
-        // ElevatedButton(
-        //     key: const Key('loginForm_continue_raisedButton'),
-        //     style: ElevatedButton.styleFrom(
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(30),
-        //       ),
-        //       primary: const Color(0xFFFFD600),
-        //     ),
-        //     onPressed: () => context.read<LoginCubit>().login(),
-        //     child: const Text('LOGIN'),
-        //   );
       },
     );
   }

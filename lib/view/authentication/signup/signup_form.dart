@@ -23,13 +23,15 @@ class SignUpForm extends StatelessWidget {
             );
         }
       },
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: const [
+              _LoginHeader(),
+              gapH16,
               _EmailInput(),
               _PasswordInput(),
               _ConfirmPasswordInput(),
@@ -39,6 +41,25 @@ class SignUpForm extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _LoginHeader extends StatelessWidget {
+  const _LoginHeader({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text(
+          'Keep Track of your Reading With Ease',
+          style: TextStyle(fontSize: 24),
+        ),
+      ],
     );
   }
 }
