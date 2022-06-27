@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/core/gaps.dart';
+import '../../../app/core/snackbars.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -15,12 +16,17 @@ class SignUpForm extends StatelessWidget {
       listener: (context, state) {
         if (state.status == FormStatus.submissionSuccess) {
           Navigator.of(context).pop();
+          showSnackbar(
+            context,
+            message: 'Succesfully Logged In!',
+            snackbarType: SnackbarType.success,
+          );
         } else if (state.status == FormStatus.submissionFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(state.errorMessage ?? 'Sign Up Failure')),
-            );
+          showSnackbar(
+            context,
+            message: state.errorMessage ?? 'Sign Up Failure',
+            snackbarType: SnackbarType.success,
+          );
         }
       },
       child: SingleChildScrollView(

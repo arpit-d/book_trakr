@@ -1,4 +1,5 @@
 import 'package:book_tracker/app/core/app_colors.dart';
+import 'package:book_tracker/app/core/snackbars.dart';
 import 'package:book_tracker/app/cubit/login_cubit.dart';
 import 'package:book_tracker/constants/enums.dart';
 import 'package:book_tracker/view/widgets/square_button.dart';
@@ -15,21 +16,17 @@ class SignInForm extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state.status == FormStatus.submissionFailure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage ?? 'Authentication Failure'),
-                ),
-              );
+            showSnackbar(
+              context,
+              message: state.errorMessage ?? 'Authentication Failure',
+              snackbarType: SnackbarType.error,
+            );
           } else if (state.status == FormStatus.submissionSuccess) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                const SnackBar(
-                  content: Text('Succesfully Logged In!'),
-                ),
-              );
+            showSnackbar(
+              context,
+              message: 'Succesfully Logged In!',
+              snackbarType: SnackbarType.success,
+            );
           }
         },
         child: SingleChildScrollView(
@@ -184,9 +181,7 @@ class _LoginButton extends StatelessWidget {
             : SquareButton(
                 isDisabled: false,
                 title: 'Login',
-                onPressed: () => state.status == FormStatus.valid
-                    ? context.read<LoginCubit>().login()
-                    : null,
+                onPressed: () => context.read<LoginCubit>().login(),
               );
       },
     );
