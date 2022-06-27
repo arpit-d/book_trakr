@@ -131,14 +131,19 @@ class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
-      buildWhen: (previous, current) => previous.status != current.status,
+      //   buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
+        // debugPrint("Is Email Valid? ${state.isEmailValid}");
+        // debugPrint("Email: ${state.email}");
+        // debugPrint("Is Password Valid? ${state.isPasswordValid}");
+        // debugPrint("Password: ${state.password}");
+        debugPrint("Form Valid in UI: ${state.status.toString()}");
         return state.status == FormStatus.submissionInProgress
             ? const CircularProgressIndicator()
             : SquareButton(
                 isDisabled: false,
                 title: 'Login',
-                onPressed: () => state.isEmailValid && state.isPasswordValid
+                onPressed: () => state.status == FormStatus.valid
                     ? context.read<LoginCubit>().login()
                     : null,
               );
@@ -167,6 +172,7 @@ class _GoogleButton extends StatelessWidget {
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return SquareButton(
+          color: Colors.black,
           isDisabled: false,
           title: 'Login With Google',
           onPressed: () => context.read<LoginCubit>().logInWithGoogle(),

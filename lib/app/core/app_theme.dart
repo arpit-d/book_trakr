@@ -45,9 +45,10 @@ class AppTheme {
             elevation: MaterialStateProperty.all<double>(0),
             textStyle: MaterialStateProperty.all<TextStyle>(
               const TextStyle(
-                letterSpacing: 1.6,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                color: Colors.white,
+                // letterSpacing: 1.1,
+                fontSize: 20,
+                // fontWeight: FontWeight.w500,
               ),
             ),
           ),

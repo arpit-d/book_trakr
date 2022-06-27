@@ -4,6 +4,7 @@ import 'package:book_tracker/data/exceptions/auth_exceptions/email_login_excepti
 import 'package:book_tracker/data/repository/auth_repository.dart';
 import 'package:book_tracker/data/validators/validators.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import '../../data/exceptions/auth_exceptions/google_login_exceptions.dart';
 
@@ -14,18 +15,19 @@ class LoginCubit extends Cubit<LoginState> {
 
   final AuthRepository _authenticationRepository;
 
-  void isFormValid() => emit(
-        state.copyWith(
-            status: state.isEmailValid && state.isPasswordValid
-                ? FormStatus.valid
-                : FormStatus.invalid),
-      );
+  FormStatus formStatus() {
+    debugPrint("${state.isEmailValid} && ${state.isPasswordValid}");
+    return state.isEmailValid && state.isPasswordValid
+        ? FormStatus.valid
+        : FormStatus.invalid;
+  }
 
   void emailChanged(String newEmailValue) {
     emit(
       state.copyWith(
         email: newEmailValue,
         isEmailValid: Validators.validateEmail(newEmailValue),
+        status: formStatus(),
       ),
     );
   }
@@ -34,6 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(
       password: newPasswordValue,
       isPasswordValid: Validators.validatePassword(newPasswordValue),
+      status: formStatus(),
     ));
   }
 
@@ -52,9 +55,6 @@ class LoginCubit extends Cubit<LoginState> {
           status: FormStatus.submissionFailure,
         ),
       );
-      emit(state.copyWith(status: FormStatus.initial));
-    } catch (_) {
-      emit(state.copyWith(status: FormStatus.submissionFailure));
       emit(state.copyWith(status: FormStatus.initial));
     }
   }
