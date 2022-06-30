@@ -41,9 +41,10 @@ dependencies:
   flutter_bloc: ^8.0.1
   flow_builder: ^0.0.8
   google_fonts: 
-  font_awesome_flutter: ^9.1.0
   flutter_svg: ^1.1.0
   cloud_firestore: ^3.1.18
+  line_awesome_flutter: ^2.0.0
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +66,7 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  # uses-material-design: true
+  uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:

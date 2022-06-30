@@ -35,8 +35,13 @@ class AppTheme {
         ),
         hintColor: AppColors.greyLabelColor,
         appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          elevation: 0,
           systemOverlayStyle:
               SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        ),
+        iconTheme: const IconThemeData(
+          color: AppColors.darkGreyColor,
         ),
         progressIndicatorTheme:
             const ProgressIndicatorThemeData(color: AppColors.primaryColor),
