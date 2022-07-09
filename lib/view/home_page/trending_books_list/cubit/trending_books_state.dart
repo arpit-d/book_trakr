@@ -11,6 +11,12 @@ class TrendingBooksInitial extends TrendingBooksState {}
 
 class TrendingBooksLoading extends TrendingBooksState {}
 
-class TrendingBooksLoaded extends TrendingBooksState {}
+class TrendingBooksLoaded extends TrendingBooksState {
+  final TrendingBooksList trendingBooksList;
+
+  const TrendingBooksLoaded({required this.trendingBooksList});
+  @override
+  List<Object> get props => [trendingBooksList];
+}
 
 class TrendingBooksError extends TrendingBooksState {}
