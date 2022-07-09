@@ -27,7 +27,6 @@ class TrendingBooksListView extends StatelessWidget {
           return const CircularProgressIndicator();
         }
         if (state is TrendingBooksLoaded) {
-          debugPrint('Built');
           return Text(state.trendingBooksList.works.first.title);
         }
         return Container();

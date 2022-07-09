@@ -18,9 +18,19 @@ class AppTheme {
             selectionColor: AppColors.greyLabelColor),
         focusColor: AppColors.greyLabelColor,
         inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          fillColor: AppColors.lightGreyColor,
           labelStyle: TextStyle(color: AppColors.greyLabelColor),
           errorStyle: TextStyle(color: AppColors.redErrorColor),
-          focusColor: AppColors.greyLabelColor,
+          // focusColor: AppColors.greyLabelColor,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGreyColor),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGreyColor),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
         ),
         indicatorColor: AppColors.primaryColor,
         tabBarTheme: const TabBarTheme(

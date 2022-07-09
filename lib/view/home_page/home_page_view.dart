@@ -4,6 +4,7 @@ import 'package:book_tracker/app/core/app_icons.dart';
 import 'package:book_tracker/view/home_page/trending_books_list/view/trending_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -12,10 +13,18 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.select((AppBloc bloc) => bloc.state.user);
     return Scaffold(
-      drawer: const Drawer(),
+      //  drawer: const Drawer(),
       appBar: AppBar(
+        primary: true,
+        title: const Text(
+          "Books",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            letterSpacing: 1.1,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -37,13 +46,19 @@ class Dashboard extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const TrendingBooksList(),
-          Center(
-            child: Text(user.email.toString()),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: const [
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Search',
+                suffixIcon: Icon(LineAwesomeIcons.search),
+              ),
+            ),
+            TrendingBooksList(),
+          ],
+        ),
       ),
     );
   }
