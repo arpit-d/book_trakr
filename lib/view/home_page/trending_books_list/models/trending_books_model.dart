@@ -10,17 +10,15 @@ class TrendingBooksList {
   final List<Work> works;
 
   factory TrendingBooksList.fromJson(Map<String, dynamic> json) {
-    Iterable workList = json["works"];
+    List workList = json["works"];
     List<Work> works = [];
-    int index = 0;
-    for (var w in workList) {
-      while (index <= 4) {
-        Work work = Work.fromJson(w);
-        works.add(work);
-        debugPrint(work.title);
-        index++;
-      }
+    // We only want to display the first 5 trending books
+    for (int i = 0; i <= 4; i++) {
+      Work work = Work.fromJson(workList[i]);
+      works.add(work);
+      debugPrint(work.title.toString());
     }
+
     return TrendingBooksList(
       query: json["query"],
       works: works,

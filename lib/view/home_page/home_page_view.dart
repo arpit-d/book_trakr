@@ -48,7 +48,7 @@ class Dashboard extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
@@ -71,7 +71,9 @@ class _SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextField(
       decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: 'Search',
+        hintText: 'Search for a book...',
         suffixIcon: Icon(LineAwesomeIcons.search),
       ),
     );

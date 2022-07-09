@@ -40,7 +40,7 @@ class TrendingBooksListView extends StatelessWidget {
                 ),
               ),
               gapH8,
-              Text(state.trendingBooksList.works.first.title),
+              Text(state.trendingBooksList.works.last.title),
             ],
           );
         }
