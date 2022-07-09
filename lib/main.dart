@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:book_tracker/app/bloc/app_bloc.dart';
 import 'package:book_tracker/app/core/app_theme.dart';
 import 'package:book_tracker/app_observer.dart';
@@ -26,12 +28,15 @@ Future<void> main() {
       // which is required to use platform channels to call the native code.
       WidgetsFlutterBinding.ensureInitialized();
       // Initializes Firebase
-      await Firebase.initializeApp();
+      if (!Platform.isWindows) await Firebase.initializeApp();
       // Creates an instance of the [AuthRepository] class
-      final authenticationRepository = AuthRepository();
+      if (!Platform.isWindows) {
+        final authenticationRepository = AuthRepository();
+        await authenticationRepository.user.first;
+        runApp(App(authenticationRepository: authenticationRepository));
+      }
 
-      await authenticationRepository.user.first;
-      runApp(App(authenticationRepository: authenticationRepository));
+      if (Platform.isWindows) runApp(const AppWidget());
     },
     blocObserver: AppBlocObserver(),
   );
@@ -78,9 +83,11 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: FlowBuilder<AppStatus>(
-          state: context.select((AppBloc bloc) => bloc.state.status),
-          onGeneratePages: onGenerateAppViewPages),
+      home: Platform.isWindows
+          ? const Dashboard()
+          : FlowBuilder<AppStatus>(
+              state: context.select((AppBloc bloc) => bloc.state.status),
+              onGeneratePages: onGenerateAppViewPages),
     );
   }
 }
