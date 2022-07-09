@@ -28,9 +28,11 @@ Future<void> main() {
       // which is required to use platform channels to call the native code.
       WidgetsFlutterBinding.ensureInitialized();
       // Initializes Firebase
-      if (!Platform.isWindows) await Firebase.initializeApp();
-      // Creates an instance of the [AuthRepository] class
+
       if (!Platform.isWindows) {
+        // Initializes Firebase
+        await Firebase.initializeApp();
+        // Creates an instance of the [AuthRepository] class
         final authenticationRepository = AuthRepository();
         await authenticationRepository.user.first;
         runApp(App(authenticationRepository: authenticationRepository));
