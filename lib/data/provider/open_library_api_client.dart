@@ -16,7 +16,6 @@ class OpenLibraryApiClient {
     // JSON data it contains.
     final response =
         await _httpClient.get(Uri.parse('$_baseUrl/trending/daily.json'));
-
     if (response.statusCode != 200) {
       throw OpenLibraryApiException.fromResponseStatusCode(response.statusCode);
     }

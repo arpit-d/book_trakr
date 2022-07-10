@@ -1,6 +1,5 @@
 import 'package:book_tracker/app/core/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -47,8 +46,6 @@ class AppTheme {
         appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0,
-          systemOverlayStyle:
-              SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         ),
         iconTheme: const IconThemeData(
           color: AppColors.darkGreyColor,
