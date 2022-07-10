@@ -17,9 +17,10 @@ class AppTheme {
             selectionColor: AppColors.greyLabelColor),
         focusColor: AppColors.greyLabelColor,
         inputDecorationTheme: const InputDecorationTheme(
+          alignLabelWithHint: true,
           filled: true,
           fillColor: AppColors.lightGreyColor,
-          labelStyle: TextStyle(color: AppColors.greyLabelColor),
+          labelStyle: TextStyle(color: AppColors.darkGreyColor),
           errorStyle: TextStyle(color: AppColors.redErrorColor),
           // focusColor: AppColors.greyLabelColor,
           focusedBorder: OutlineInputBorder(
@@ -30,17 +31,29 @@ class AppTheme {
             borderSide: BorderSide(color: AppColors.lightGreyColor),
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
           ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGreyColor),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGreyColor),
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
         ),
         indicatorColor: AppColors.primaryColor,
-        tabBarTheme: const TabBarTheme(
+        tabBarTheme: TabBarTheme(
           indicatorSize: TabBarIndicatorSize.label,
           labelStyle: TextStyle(
             color: AppColors.primaryColor,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.1,
             fontSize: 22,
+            fontFamily: GoogleFonts.openSans().fontFamily,
           ),
-          unselectedLabelStyle: TextStyle(color: Colors.grey),
+          unselectedLabelStyle: TextStyle(
+            color: Colors.grey,
+            fontFamily: GoogleFonts.openSans().fontFamily,
+          ),
         ),
         hintColor: AppColors.greyLabelColor,
         appBarTheme: const AppBarTheme(
@@ -56,7 +69,8 @@ class AppTheme {
           style: ButtonStyle(
             elevation: MaterialStateProperty.all<double>(0),
             textStyle: MaterialStateProperty.all<TextStyle>(
-              const TextStyle(
+              TextStyle(
+                fontFamily: GoogleFonts.openSans().fontFamily,
                 color: Colors.white,
                 // letterSpacing: 1.1,
                 fontSize: 20,
