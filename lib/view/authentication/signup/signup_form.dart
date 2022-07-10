@@ -1,4 +1,3 @@
-import 'package:book_tracker/app/cubit/cubit/signup_cubit.dart';
 import 'package:book_tracker/constants/enums.dart';
 import 'package:book_tracker/view/widgets/square_button.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/core/gaps.dart';
 import '../../../app/core/snackbars.dart';
+import 'cubit/signup_cubit.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key? key}) : super(key: key);

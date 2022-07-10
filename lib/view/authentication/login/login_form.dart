@@ -1,12 +1,12 @@
 import 'package:book_tracker/app/core/app_colors.dart';
 import 'package:book_tracker/app/core/snackbars.dart';
-import 'package:book_tracker/app/cubit/login_cubit.dart';
 import 'package:book_tracker/constants/enums.dart';
 import 'package:book_tracker/view/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/core/gaps.dart';
+import 'cubit/login_cubit.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);

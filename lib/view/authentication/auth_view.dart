@@ -1,10 +1,10 @@
-import 'package:book_tracker/app/cubit/cubit/signup_cubit.dart';
-import 'package:book_tracker/app/cubit/login_cubit.dart';
 import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/view/authentication/signin/signin_form.dart';
+import 'package:book_tracker/view/authentication/login/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'login/cubit/login_cubit.dart';
+import 'signup/cubit/signup_cubit.dart';
 import 'signup/signup_form.dart';
 
 class AuthView extends StatefulWidget {

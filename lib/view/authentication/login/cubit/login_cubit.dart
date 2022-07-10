@@ -6,7 +6,7 @@ import 'package:book_tracker/data/validators/validators.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/exceptions/auth_exceptions/google_login_exceptions.dart';
+import '../../../../data/exceptions/auth_exceptions/google_login_exceptions.dart';
 
 part 'login_state.dart';
 
