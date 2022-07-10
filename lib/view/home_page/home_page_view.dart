@@ -54,9 +54,26 @@ class Dashboard extends StatelessWidget {
           children: const [
             _SearchTextField(),
             gapH16,
+            _TitleWidget(title: "Trending Books"),
+            gapH12,
             TrendingBooksList(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _TitleWidget extends StatelessWidget {
+  const _TitleWidget({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
       ),
     );
   }

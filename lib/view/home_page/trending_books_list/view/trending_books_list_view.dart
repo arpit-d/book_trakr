@@ -25,23 +25,44 @@ class TrendingBooksListView extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state is TrendingBooksLoading) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
         if (state is TrendingBooksLoaded) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Trending Books",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              gapH8,
-              Text(state.trendingBooksList.works.last.title),
-            ],
+          final trendingBooksList = state.trendingBooksList.works;
+          return Expanded(
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: trendingBooksList.length,
+              itemBuilder: ((context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Image.network(
+                          'https://covers.openlibrary.org/b/id/${trendingBooksList[index].coverI}-L.jpg',
+                          fit: BoxFit.fill,
+                          height: 180,
+                          width: 140,
+                        ),
+                      ),
+                      gapH4,
+                      SizedBox(
+                        width: 140,
+                        child: Text(
+                          trendingBooksList[index].title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
           );
         }
         return Container();
