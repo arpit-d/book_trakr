@@ -1,7 +1,9 @@
+import 'package:book_tracker/app/core/app_icons.dart';
 import 'package:book_tracker/constants/enums.dart';
 import 'package:book_tracker/features/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../../app/core/gaps.dart';
 import '../../../app/core/snackbars.dart';
@@ -31,7 +33,7 @@ class SignUpForm extends StatelessWidget {
       },
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -39,7 +41,9 @@ class SignUpForm extends StatelessWidget {
               _LoginHeader(),
               gapH16,
               _EmailInput(),
+              gapH8,
               _PasswordInput(),
+              gapH8,
               _ConfirmPasswordInput(),
               gapH16,
               _SignUpButton(),
@@ -85,6 +89,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
+            suffixIcon: Icon(LineAwesomeIcons.envelope),
             labelText: 'email',
             helperText: '',
           ),
@@ -110,6 +115,7 @@ class _PasswordInput extends StatelessWidget {
           obscureText: true,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
+            suffixIcon: Icon(passwordIcon),
             labelText: 'password',
             helperText: '',
           ),
@@ -139,6 +145,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
           obscureText: true,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
+            suffixIcon: Icon(passwordIcon),
             labelText: 'confirm password',
             helperText: '',
           ),
@@ -149,6 +156,14 @@ class _ConfirmPasswordInput extends StatelessWidget {
 }
 
 class _SignUpButton extends StatelessWidget {
+  void _signUpButtonPressed(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      currentFocus.focusedChild!.unfocus();
+    }
+    context.read<SignUpCubit>().signUpFormSubmitted();
+  }
+
   const _SignUpButton({
     Key? key,
   }) : super(key: key);
@@ -158,12 +173,11 @@ class _SignUpButton extends StatelessWidget {
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return state.status == FormStatus.submissionInProgress
-            ? const CircularProgressIndicator()
+            ? const Center(child: CircularProgressIndicator())
             : SquareButton(
                 isDisabled: false,
                 title: 'Sign Up',
-                onPressed: () =>
-                    context.read<SignUpCubit>().signUpFormSubmitted(),
+                onPressed: () => _signUpButtonPressed(context),
               );
       },
     );

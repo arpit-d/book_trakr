@@ -5,6 +5,7 @@ import 'package:book_tracker/features/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/core/app_icons.dart';
 import '../../../app/core/gaps.dart';
 import 'cubit/login_cubit.dart';
 
@@ -31,7 +32,7 @@ class SignInForm extends StatelessWidget {
         },
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -39,6 +40,7 @@ class SignInForm extends StatelessWidget {
                 _LoginHeader(),
                 gapH16,
                 _EmailInput(),
+                gapH8,
                 _PasswordInput(),
                 gapH16,
                 _LoginButton(),
@@ -130,6 +132,7 @@ class _EmailInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
+            suffixIcon: Icon(emailIcon),
             labelText: 'email',
             helperText: '',
           ),
@@ -155,6 +158,7 @@ class _PasswordInput extends StatelessWidget {
           obscureText: true,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: const InputDecoration(
+            suffixIcon: Icon(passwordIcon),
             helperText: '',
             labelText: 'password',
           ),
@@ -166,6 +170,14 @@ class _PasswordInput extends StatelessWidget {
 
 class _LoginButton extends StatelessWidget {
   const _LoginButton({Key? key}) : super(key: key);
+  void _loginButtonPressed(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      currentFocus.focusedChild!.unfocus();
+    }
+    context.read<LoginCubit>().login();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
@@ -177,11 +189,11 @@ class _LoginButton extends StatelessWidget {
         // debugPrint("Password: ${state.password}");
         debugPrint("Form Valid in UI: ${state.status.toString()}");
         return state.status == FormStatus.submissionInProgress
-            ? const CircularProgressIndicator()
+            ? const Center(child: CircularProgressIndicator())
             : SquareButton(
                 isDisabled: false,
                 title: 'Login',
-                onPressed: () => context.read<LoginCubit>().login(),
+                onPressed: () => _loginButtonPressed(context),
               );
       },
     );

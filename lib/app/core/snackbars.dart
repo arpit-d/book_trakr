@@ -1,4 +1,5 @@
 import 'package:book_tracker/app/core/app_colors.dart';
+import 'package:book_tracker/app/core/app_theme.dart';
 import 'package:flutter/material.dart';
 
 enum SnackbarType {
@@ -18,8 +19,9 @@ showSnackbar(
       SnackBar(
         content: Text(
           message,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
+            fontFamily: AppTheme.fontFamily,
           ),
         ),
         behavior: SnackBarBehavior.floating,
