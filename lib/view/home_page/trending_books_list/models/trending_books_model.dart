@@ -1,5 +1,3 @@
-import 'package:flutter/rendering.dart';
-
 class TrendingBooksList {
   TrendingBooksList({
     required this.query,
@@ -13,15 +11,20 @@ class TrendingBooksList {
     List workList = json["works"];
     List<Work> works = [];
     // We only want to display the first 5 trending books
-    for (int i = 0; i <= 4; i++) {
+    // since the Open Library Api doesn't return the entire 100 books
+    // it is supposed to which leave the app in a limbo
+    // since it keeps waiting for data which never arrives
+    // Also shuffle the Books we receive, so the user sees new books
+    // instead of the same ones every time
+    for (int i = 0; i < 10; i++) {
       Work work = Work.fromJson(workList[i]);
       works.add(work);
-      debugPrint(work.title.toString());
+      works.shuffle();
     }
 
     return TrendingBooksList(
       query: json["query"],
-      works: works,
+      works: works.sublist(0, 5),
     );
   }
 }
