@@ -1,5 +1,5 @@
 import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/view/authentication/login/login_form.dart';
+import 'package:book_tracker/features/authentication/login/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

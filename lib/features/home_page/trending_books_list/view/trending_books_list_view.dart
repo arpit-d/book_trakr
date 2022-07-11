@@ -1,8 +1,9 @@
 import 'package:book_tracker/app/core/gaps.dart';
-import 'package:book_tracker/view/home_page/trending_books_list/cubit/trending_books_cubit.dart';
-import 'package:book_tracker/view/home_page/trending_books_list/repository/trending_books_list_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubit/trending_books_cubit.dart';
+import '../repository/trending_books_list_repository.dart';
 
 class TrendingBooksList extends StatelessWidget {
   const TrendingBooksList({Key? key}) : super(key: key);

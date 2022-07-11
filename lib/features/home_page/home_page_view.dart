@@ -2,10 +2,11 @@ import 'package:book_tracker/app/bloc/app_bloc.dart';
 import 'package:book_tracker/app/core/app_colors.dart';
 import 'package:book_tracker/app/core/app_icons.dart';
 import 'package:book_tracker/app/core/gaps.dart';
-import 'package:book_tracker/view/home_page/trending_books_list/view/trending_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import 'trending_books_list/view/trending_books_list_view.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);

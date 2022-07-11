@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_tracker/view/home_page/trending_books_list/models/trending_books_model.dart';
-import 'package:book_tracker/view/home_page/trending_books_list/repository/trending_books_list_repository.dart';
 
 import 'package:equatable/equatable.dart';
+
+import '../models/trending_books_model.dart';
+import '../repository/trending_books_list_repository.dart';
 
 part 'trending_books_state.dart';
 
