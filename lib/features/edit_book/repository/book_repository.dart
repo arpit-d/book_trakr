@@ -1,7 +1,7 @@
-import 'package:book_tracker/data/provider/firebase_db_client.dart';
-import 'package:book_tracker/models/user_model.dart';
 import 'dart:async';
 
+import '../../../data/provider/firebase_db_client.dart';
+import '../../../models/user_model.dart';
 import '../model/book_model.dart';
 
 class BookRepository {

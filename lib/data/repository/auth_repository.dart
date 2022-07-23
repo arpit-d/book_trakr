@@ -1,11 +1,9 @@
-import 'package:book_tracker/data/exceptions/auth_exceptions/email_login_exceptions.dart';
-import 'package:book_tracker/data/exceptions/auth_exceptions/email_signup_exceptions.dart';
-import 'package:book_tracker/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../exceptions/auth_exceptions/google_login_exceptions.dart';
+import '../../models/user_model.dart';
+import '../exceptions/exceptions.dart';
 
 class AuthRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;

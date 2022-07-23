@@ -1,8 +1,8 @@
-import 'package:book_tracker/features/edit_book/bloc/edit_book_bloc.dart';
-import 'package:book_tracker/features/edit_book/repository/book_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../bloc/edit_book_bloc.dart';
+import '../../repository/book_repository.dart';
 import 'add_book_form.dart';
 
 class AddBookView extends StatelessWidget {

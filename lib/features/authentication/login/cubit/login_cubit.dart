@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_tracker/constants/enums.dart';
-import 'package:book_tracker/data/exceptions/auth_exceptions/email_login_exceptions.dart';
-import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/data/validators/validators.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data/exceptions/auth_exceptions/google_login_exceptions.dart';
+import '../../../../constants/enums.dart';
+import '../../../../data/exceptions/exceptions.dart';
+import '../../../../data/repository/auth_repository.dart';
+import '../../../../data/validators/validators.dart';
 
 part 'login_state.dart';
 

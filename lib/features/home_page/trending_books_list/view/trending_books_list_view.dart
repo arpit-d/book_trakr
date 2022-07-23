@@ -1,7 +1,7 @@
-import 'package:book_tracker/app/core/gaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/gaps.dart';
 import '../cubit/trending_books_cubit.dart';
 import '../repository/trending_books_list_repository.dart';
 

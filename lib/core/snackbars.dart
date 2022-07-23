@@ -1,6 +1,6 @@
-import 'package:book_tracker/app/core/app_colors.dart';
-import 'package:book_tracker/app/core/app_theme.dart';
 import 'package:flutter/material.dart';
+
+import 'styles/styles.dart';
 
 enum SnackbarType {
   success,

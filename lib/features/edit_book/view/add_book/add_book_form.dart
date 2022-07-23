@@ -1,8 +1,11 @@
-import 'package:book_tracker/app/core/gaps.dart';
-import 'package:book_tracker/features/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/gaps.dart';
+import '../../../../core/styles/styles.dart';
+import '../../../app/bloc/app_bloc.dart';
+
+import '../../../widgets/square_button.dart';
 import '../../bloc/edit_book_bloc.dart';
 
 class AddBookForm extends StatelessWidget {
@@ -17,6 +20,15 @@ class AddBookForm extends StatelessWidget {
           key: _formKey,
           child: Column(
             children: [
+              IconButton(
+                onPressed: () {
+                  context.read<AppBloc>().add(AppLogoutRequested());
+                },
+                icon: const Icon(
+                  signOutIcon,
+                  color: AppColors.darkGreyColor,
+                ),
+              ),
               TextFormField(
                 onChanged: (val) => BlocProvider.of<EditBookBloc>(context)
                     .add(EditBookTitleChanged(val)),

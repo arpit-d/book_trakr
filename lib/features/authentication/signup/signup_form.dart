@@ -1,12 +1,12 @@
-import 'package:book_tracker/app/core/app_icons.dart';
-import 'package:book_tracker/constants/enums.dart';
-import 'package:book_tracker/features/widgets/square_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../app/core/gaps.dart';
-import '../../../app/core/snackbars.dart';
+import '../../widgets/square_button.dart';
+import '../../../core/gaps.dart';
+import '../../../core/snackbars.dart';
+import '../../../core/styles/styles.dart';
+import '../../../constants/enums.dart';
 import 'cubit/signup_cubit.dart';
 
 class SignUpForm extends StatelessWidget {

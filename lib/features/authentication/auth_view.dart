@@ -1,9 +1,9 @@
-import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/features/authentication/login/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/repository/auth_repository.dart';
 import 'login/cubit/login_cubit.dart';
+import 'login/login_form.dart';
 import 'signup/cubit/signup_cubit.dart';
 import 'signup/signup_form.dart';
 

@@ -1,20 +1,19 @@
 import 'dart:io';
 
-import 'package:book_tracker/app/bloc/app_bloc.dart';
-import 'package:book_tracker/app/core/app_theme.dart';
-import 'package:book_tracker/app_observer.dart';
-
-import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/features/edit_book/repository/book_repository.dart';
-import 'package:book_tracker/features/home_page/home_page_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'app_observer.dart';
+import 'core/styles/styles.dart';
+import 'data/repository/auth_repository.dart';
+import 'features/app/bloc/app_bloc.dart';
 import 'features/authentication/auth_view.dart';
+import 'features/edit_book/repository/book_repository.dart';
 import 'features/edit_book/view/add_book/add_book_view.dart';
+import 'features/home_page/home_page_view.dart';
 
 Future<void> main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

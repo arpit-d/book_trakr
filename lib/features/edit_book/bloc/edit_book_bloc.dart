@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_tracker/features/edit_book/model/book_model.dart';
-import 'package:book_tracker/features/edit_book/repository/book_repository.dart';
+
 import 'package:equatable/equatable.dart';
+
+import '../model/book_model.dart';
+import '../repository/book_repository.dart';
 
 part 'edit_book_event.dart';
 part 'edit_book_state.dart';

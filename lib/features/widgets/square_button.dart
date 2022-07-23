@@ -1,8 +1,8 @@
-import 'package:book_tracker/app/core/app_colors.dart';
-import 'package:book_tracker/app/core/app_icons.dart';
-import 'package:book_tracker/app/core/gaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../core/gaps.dart';
+import '../../core/styles/styles.dart';
 
 enum ButtonType { icon, image, onlyText }
 
