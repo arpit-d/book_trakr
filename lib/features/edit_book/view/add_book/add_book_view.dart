@@ -16,7 +16,8 @@ class AddBookView extends StatelessWidget {
         title: const Text('Add New Book'),
       ),
       body: BlocProvider(
-        create: (_) => EditBookBloc(bookRepository: BookRepository()),
+        create: (_) =>
+            EditBookBloc(bookRepository: context.read<BookRepository>()),
         child: const Padding(
           padding: EdgeInsets.all(12.0),
           child: AddBookForm(),

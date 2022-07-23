@@ -5,6 +5,7 @@ import 'package:book_tracker/app/core/app_theme.dart';
 import 'package:book_tracker/app_observer.dart';
 
 import 'package:book_tracker/data/repository/auth_repository.dart';
+import 'package:book_tracker/features/edit_book/repository/book_repository.dart';
 import 'package:book_tracker/features/home_page/home_page_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_builder/flow_builder.dart';
@@ -13,7 +14,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/authentication/auth_view.dart';
-
 import 'features/edit_book/view/add_book/add_book_view.dart';
 
 Future<void> main() {
@@ -57,13 +57,18 @@ class App extends StatelessWidget {
   final AuthRepository _authenticationRepository;
   @override
   Widget build(BuildContext context) {
+    debugPrint(_authenticationRepository.currentUser.uid);
     return RepositoryProvider.value(
       value: _authenticationRepository,
       child: BlocProvider(
         create: (_) => AppBloc(
           authenticationRepository: _authenticationRepository,
         ),
-        child: const AppWidget(),
+        child: RepositoryProvider(
+          create: (context) =>
+              BookRepository(userModel: _authenticationRepository.currentUser),
+          child: const AppWidget(),
+        ),
       ),
     );
   }
@@ -77,7 +82,7 @@ class AppWidget extends StatelessWidget {
       AppStatus state, List<Page<dynamic>> pages) {
     switch (state) {
       case AppStatus.authenticated:
-        return [Dashboard.page()];
+        return [AddBookView.page()];
       case AppStatus.unauthenticated:
         return [AuthView.page()];
     }

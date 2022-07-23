@@ -23,6 +23,8 @@ class UserModel extends Equatable {
   // Empty user which represents an unauthenticated user.
   static const empty = UserModel(uid: '');
 
+  UserModel get user => UserModel(uid: uid);
+
   // Convenience getter to determine whether the current user is empty.
   bool get isEmpty => this == UserModel.empty;
 
