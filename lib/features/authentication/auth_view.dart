@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/repository/auth_repository.dart';
 import 'login/cubit/login_cubit.dart';
 import 'login/login_form.dart';
+import 'repository/auth_repository.dart';
 import 'signup/cubit/signup_cubit.dart';
 import 'signup/signup_form.dart';
 

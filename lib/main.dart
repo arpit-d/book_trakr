@@ -8,12 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_observer.dart';
 import 'core/styles/styles.dart';
-import 'data/repository/auth_repository.dart';
-import 'features/app/bloc/app_bloc.dart';
+import 'features/app/blocs/app_bloc/app_bloc.dart';
 import 'features/authentication/auth_view.dart';
+import 'features/authentication/repository/auth_repository.dart';
 import 'features/edit_book/repository/book_repository.dart';
 import 'features/edit_book/view/add_book/add_book_view.dart';
-import 'features/home_page/home_page_view.dart';
+import 'features/app/view/home_page_view.dart';
 
 Future<void> main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

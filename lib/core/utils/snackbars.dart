@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'styles/styles.dart';
+import '../styles/styles.dart';
 
 enum SnackbarType {
   success,

@@ -1,8 +1,7 @@
-import 'package:book_tracker/features/edit_book/model/book_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../features/edit_book/model/book_model.dart';
-import '../../models/user_model.dart';
+import '../../features/app/models/app_user_model.dart';
 
 /// {@template authentication_repository}
 /// Data provider class which manages Firebase Firestore functions

@@ -7,9 +7,9 @@ class TrendingBooksListRepository {
 
   final OpenLibraryApiClient _openLibraryApiClient;
 
-  Future<TrendingBooksList> getTrendingBooks() async {
+  Future<TrendingBooksModel> getTrendingBooks() async {
     final trendingBooksList = await _openLibraryApiClient.getTrendingBooks();
-    return TrendingBooksList(
+    return TrendingBooksModel(
         query: trendingBooksList.query, works: trendingBooksList.works);
   }
 }

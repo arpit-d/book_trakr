@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../core/gaps.dart';
-import '../../core/styles/styles.dart';
-import '../app/bloc/app_bloc.dart';
-import 'trending_books_list/view/trending_books_list_view.dart';
+import '../../../core/styles/styles.dart';
+import '../../../core/utils/utils.dart';
+import '../../../core/widgets/widgets.dart';
+import '../blocs/app_bloc/app_bloc.dart';
+import '../../home_page/trending_books_list_view.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -54,26 +55,11 @@ class Dashboard extends StatelessWidget {
           children: const [
             _SearchTextField(),
             gapH16,
-            _TitleWidget(title: "Trending Books"),
+            TitleWidget(title: "Trending Books"),
             gapH12,
             TrendingBooksList(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _TitleWidget extends StatelessWidget {
-  const _TitleWidget({Key? key, required this.title}) : super(key: key);
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
       ),
     );
   }

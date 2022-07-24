@@ -12,7 +12,7 @@ class TrendingBooksInitial extends TrendingBooksState {}
 class TrendingBooksLoading extends TrendingBooksState {}
 
 class TrendingBooksLoaded extends TrendingBooksState {
-  final TrendingBooksList trendingBooksList;
+  final TrendingBooksModel trendingBooksList;
 
   const TrendingBooksLoaded({required this.trendingBooksList});
   @override

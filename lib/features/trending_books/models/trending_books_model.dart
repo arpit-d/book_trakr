@@ -1,15 +1,17 @@
-class TrendingBooksList {
-  TrendingBooksList({
+//The class name was changed from TrendingBooksList to TrendingBooksModel to accurately depict what the class actually represents, i.e., a single object of the list it gets from [trending/daily.json] API response
+
+class TrendingBooksModel {
+  TrendingBooksModel({
     required this.query,
     required this.works,
   });
 
   final String query;
-  final List<Work> works;
+  final List<WorkModel> works;
 
-  factory TrendingBooksList.fromJson(Map<String, dynamic> json) {
+  factory TrendingBooksModel.fromJson(Map<String, dynamic> json) {
     List workList = json["works"];
-    List<Work> works = [];
+    List<WorkModel> works = [];
     // We only want to display the first 5 trending books
     // since the Open Library Api doesn't return the entire 100 books
     // it is supposed to which leave the app in a limbo
@@ -17,20 +19,20 @@ class TrendingBooksList {
     // Also shuffle the Books we receive, so the user sees new books
     // instead of the same ones every time
     for (int i = 0; i < 10; i++) {
-      Work work = Work.fromJson(workList[i]);
+      WorkModel work = WorkModel.fromJson(workList[i]);
       works.add(work);
       works.shuffle();
     }
 
-    return TrendingBooksList(
+    return TrendingBooksModel(
       query: json["query"],
       works: works.sublist(0, 5),
     );
   }
 }
 
-class Work {
-  Work({
+class WorkModel {
+  WorkModel({
     required this.key,
     required this.title,
     required this.editionCount,
@@ -46,7 +48,7 @@ class Work {
   final String coverEditionKey;
   final int coverI;
 
-  factory Work.fromJson(Map<String, dynamic> json) => Work(
+  factory WorkModel.fromJson(Map<String, dynamic> json) => WorkModel(
         key: json["key"],
         title: json["title"] as String,
         editionCount: json["edition_count"],

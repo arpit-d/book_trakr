@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../core/gaps.dart';
+import '../../core/utils/utils.dart';
 import '../../core/styles/styles.dart';
 
 enum ButtonType { icon, image, onlyText }

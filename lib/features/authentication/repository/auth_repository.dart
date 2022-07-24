@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../models/user_model.dart';
-import '../exceptions/exceptions.dart';
+import '../../../data/exceptions/exceptions.dart';
+import '../../app/models/app_user_model.dart';
 
 class AuthRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;

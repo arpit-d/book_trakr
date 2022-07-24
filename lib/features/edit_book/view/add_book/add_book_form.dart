@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/gaps.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../core/styles/styles.dart';
-import '../../../app/bloc/app_bloc.dart';
-
-import '../../../widgets/square_button.dart';
+import '../../../../core/widgets/widgets.dart';
+import '../../../app/blocs/app_bloc/app_bloc.dart';
 import '../../bloc/edit_book_bloc.dart';
 
 class AddBookForm extends StatelessWidget {
@@ -43,8 +42,7 @@ class AddBookForm extends StatelessWidget {
               gapH16,
               SquareButton(
                 title: 'Add Book',
-                onPressed: () => BlocProvider.of<EditBookBloc>(context)
-                    .add(const EditBookSubmitted()),
+                onPressed: () {},
                 isDisabled: false,
               ),
             ],

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../data/provider/firebase_db_client.dart';
-import '../../../models/user_model.dart';
+import '../../app/models/app_user_model.dart';
 import '../model/book_model.dart';
 
 class BookRepository {

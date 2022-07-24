@@ -1,10 +1,10 @@
 import 'dart:async';
 
-// ignore: depend_on_referenced_packages
-import 'package:bloc/bloc.dart';
-import 'package:book_tracker/data/repository/auth_repository.dart';
-import 'package:book_tracker/models/user_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../authentication/repository/auth_repository.dart';
+import '../../models/app_user_model.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

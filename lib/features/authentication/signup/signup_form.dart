@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../widgets/square_button.dart';
-import '../../../core/gaps.dart';
-import '../../../core/snackbars.dart';
+import '../../../core/utils/utils.dart';
 import '../../../core/styles/styles.dart';
 import '../../../constants/enums.dart';
+import '../../../core/widgets/widgets.dart';
 import 'cubit/signup_cubit.dart';
 
 class SignUpForm extends StatelessWidget {

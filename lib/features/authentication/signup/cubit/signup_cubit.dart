@@ -1,11 +1,10 @@
-import 'package:bloc/bloc.dart';
-
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../constants/enums.dart';
 import '../../../../data/exceptions/exceptions.dart';
-import '../../../../data/repository/auth_repository.dart';
 import '../../../../data/validators/validators.dart';
+import '../../repository/auth_repository.dart';
 
 part 'signup_state.dart';
 
