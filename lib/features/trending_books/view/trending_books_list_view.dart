@@ -26,7 +26,9 @@ class TrendingBooksListView extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state is TrendingBooksLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
         if (state is TrendingBooksLoaded) {
           final trendingBooksList = state.trendingBooksList.works;
