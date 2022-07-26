@@ -5,8 +5,8 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../core/styles/styles.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../trending_books/view/trending_books_list_view.dart';
 import '../blocs/app_bloc/app_bloc.dart';
-import '../../home_page/trending_books_list_view.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);

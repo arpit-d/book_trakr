@@ -25,8 +25,38 @@ class EditBookAuthorsChanged extends EditBookEvent {
   List<Object> get props => [authors];
 }
 
-class EditBookSubmitted extends EditBookEvent {
-  const EditBookSubmitted();
+class EditBookPagesChanged extends EditBookEvent {
+  final String pages;
+
+  const EditBookPagesChanged(this.pages);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [pages];
+}
+
+class EditBookDescriptionChanged extends EditBookEvent {
+  final String description;
+
+  const EditBookDescriptionChanged(this.description);
+
+  @override
+  List<Object> get props => [description];
+}
+
+class EditBookIsbnChanged extends EditBookEvent {
+  final String isbn;
+
+  const EditBookIsbnChanged(this.isbn);
+
+  @override
+  List<Object> get props => [isbn];
+}
+
+class EditBookUserReviewChanged extends EditBookEvent {
+  final String userReview;
+
+  const EditBookUserReviewChanged(this.userReview);
+
+  @override
+  List<Object> get props => [userReview];
 }
