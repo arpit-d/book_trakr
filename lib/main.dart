@@ -56,16 +56,19 @@ class App extends StatelessWidget {
   final AuthRepository _authenticationRepository;
   @override
   Widget build(BuildContext context) {
-    debugPrint(_authenticationRepository.currentUser.uid);
     return RepositoryProvider.value(
       value: _authenticationRepository,
       child: BlocProvider(
         create: (_) => AppBloc(
           authenticationRepository: _authenticationRepository,
         ),
-        child: RepositoryProvider(
-          create: (context) =>
-              BookRepository(userModel: _authenticationRepository.currentUser),
+        child: MultiRepositoryProvider(
+          providers: [
+            RepositoryProvider(
+              create: (context) => BookRepository(
+                  userModel: _authenticationRepository.currentUser),
+            ),
+          ],
           child: const AppWidget(),
         ),
       ),

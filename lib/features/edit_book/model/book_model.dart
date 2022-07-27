@@ -8,41 +8,36 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class BookModel extends Equatable {
-  final String? id;
   final String title;
   final String authors;
-  final String? key;
-
+  final int pages;
+  final String description;
+  final String isbn;
+  final String userReview;
   const BookModel({
-    this.id,
     required this.title,
     required this.authors,
-    this.key,
+    required this.pages,
+    required this.description,
+    required this.isbn,
+    required this.userReview,
   });
 
-  // factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
-  //       title: json["title"],
-  //       authors: json["authors"],
-  //       key: json["key"],
-  //     );
-
-  // Map<String, dynamic> toJson() => {
-  //       "title": title,
-  //       "authors": authors,
-  //       "key": key,
-  //     };
-
   BookModel copyWith({
-    String? id,
     String? title,
     String? authors,
-    String? key,
+    int? pages,
+    String? description,
+    String? isbn,
+    String? userReview,
   }) {
     return BookModel(
-      id: id ?? this.id,
       title: title ?? this.title,
       authors: authors ?? this.authors,
-      key: key ?? this.key,
+      pages: pages ?? this.pages,
+      description: description ?? this.description,
+      isbn: isbn ?? this.isbn,
+      userReview: userReview ?? this.userReview,
     );
   }
 
@@ -50,16 +45,21 @@ class BookModel extends Equatable {
     return <String, dynamic>{
       'title': title,
       'authors': authors,
-      'key': key,
+      'pages': pages,
+      'description': description,
+      'isbn': isbn,
+      'userReview': userReview,
     };
   }
 
   factory BookModel.fromMap(Map<String, dynamic> map) {
     return BookModel(
-      id: map['id'] as String,
       title: map['title'] as String,
       authors: map['authors'] as String,
-      key: map['key'] != null ? map['key'] as String : null,
+      pages: map['pages'] as int,
+      description: map['description'] as String,
+      isbn: map['isbn'] as String,
+      userReview: map['userReview'] as String,
     );
   }
 
@@ -72,5 +72,14 @@ class BookModel extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [title, authors];
+  List<Object> get props {
+    return [
+      title,
+      authors,
+      pages,
+      description,
+      isbn,
+      userReview,
+    ];
+  }
 }

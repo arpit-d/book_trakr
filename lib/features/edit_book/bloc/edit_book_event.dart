@@ -60,3 +60,7 @@ class EditBookUserReviewChanged extends EditBookEvent {
   @override
   List<Object> get props => [userReview];
 }
+
+class EditBookSubmit extends EditBookEvent {
+  const EditBookSubmit();
+}
