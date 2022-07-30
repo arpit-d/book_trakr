@@ -1,5 +1,15 @@
 part of 'edit_book_bloc.dart';
 
+// enum EditBookFormStatus {
+//   invalid('Please add atleast book title & authors'),
+//   initial(''),
+//   valid('Added Book Succesfully!'),
+//   loading('Adding Book');
+
+//   const EditBookFormStatus(this.message);
+//   final String message;
+// }
+
 class EditBookState extends Equatable {
   final String title;
   final String authors;
@@ -7,6 +17,7 @@ class EditBookState extends Equatable {
   final String description;
   final String isbn;
   final String userReview;
+//  final EditBookFormStatus editBookFormStatus;
   const EditBookState({
     required this.title,
     required this.authors,
@@ -14,6 +25,7 @@ class EditBookState extends Equatable {
     this.description = '',
     this.isbn = '',
     this.userReview = '',
+//    this.editBookFormStatus = EditBookFormStatus.initial,
   });
 
   EditBookState copyWith({
@@ -23,6 +35,7 @@ class EditBookState extends Equatable {
     String? description,
     String? isbn,
     String? userReview,
+    //  EditBookFormStatus? editBookFormStatus,
   }) {
     return EditBookState(
       title: title ?? this.title,
@@ -31,28 +44,7 @@ class EditBookState extends Equatable {
       description: description ?? this.description,
       isbn: isbn ?? this.isbn,
       userReview: userReview ?? this.userReview,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'title': title,
-      'authors': authors,
-      'pages': pages,
-      'description': description,
-      'isbn': isbn,
-      'userReview': userReview,
-    };
-  }
-
-  factory EditBookState.fromMap(Map<String, dynamic> map) {
-    return EditBookState(
-      title: map['title'] as String,
-      authors: map['authors'] as String,
-      pages: map['pages'] as int,
-      description: map['subtitle'] as String,
-      isbn: map['isbn'] as String,
-      userReview: map['userReview'] as String,
+      //     editBookFormStatus: editBookFormStatus ?? this.editBookFormStatus
     );
   }
 
@@ -61,6 +53,14 @@ class EditBookState extends Equatable {
 
   @override
   List<Object> get props {
-    return [title, authors, pages, description, isbn, userReview];
+    return [
+      title,
+      authors,
+      pages,
+      description,
+      isbn,
+      userReview,
+      //     editBookFormStatus
+    ];
   }
 }

@@ -1,6 +1,7 @@
 import 'package:book_tracker/features/edit_book/model/book_model.dart';
 import 'package:book_tracker/features/edit_book/repository/book_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'edit_book_event.dart';
@@ -31,34 +32,38 @@ class EditBookBloc extends Bloc<EditBookEvent, EditBookState> {
 
   void _onPagesChanged(
       EditBookPagesChanged event, Emitter<EditBookState> emit) {
-    emit(state.copyWith(authors: event.pages));
+    final pages = int.tryParse(event.pages) ?? 0;
+    emit(state.copyWith(pages: pages));
   }
 
   void _onBookDescriptionChanged(
       EditBookDescriptionChanged event, Emitter<EditBookState> emit) {
-    emit(state.copyWith(authors: event.description));
+    emit(state.copyWith(description: event.description));
   }
 
   void _onBookIsbnChanged(
       EditBookIsbnChanged event, Emitter<EditBookState> emit) {
-    emit(state.copyWith(authors: event.isbn));
+    emit(state.copyWith(isbn: event.isbn));
   }
 
   void _onBookUserReviewChanged(
       EditBookUserReviewChanged event, Emitter<EditBookState> emit) {
-    emit(state.copyWith(authors: event.userReview));
+    emit(state.copyWith(userReview: event.userReview));
   }
 
   void _onBookSubmitted(EditBookSubmit event, Emitter<EditBookState> emit) {
+    final book = BookModel(
+      title: state.title,
+      authors: state.authors,
+      pages: state.pages,
+      description: state.description,
+      isbn: state.isbn,
+      userReview: state.userReview,
+    );
+    debugPrint(book.toString());
+
     try {
-      final book = BookModel(
-          title: state.title,
-          authors: state.authors,
-          pages: state.pages,
-          description: state.description,
-          isbn: state.isbn,
-          userReview: state.userReview);
       _bookRepository.addBook(book);
-    } catch (e) {}
+    } finally {}
   }
 }
