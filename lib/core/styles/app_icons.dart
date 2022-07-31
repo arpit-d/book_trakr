@@ -5,3 +5,4 @@ const signInIcon = LineAwesomeIcons.alternate_sign_in;
 const notificationBellIcon = LineAwesomeIcons.bell;
 const emailIcon = LineAwesomeIcons.envelope;
 const passwordIcon = LineAwesomeIcons.lock;
+const bookIcon = LineAwesomeIcons.book;

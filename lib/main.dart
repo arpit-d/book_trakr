@@ -12,7 +12,6 @@ import 'features/app/blocs/app_bloc/app_bloc.dart';
 import 'features/authentication/auth_view.dart';
 import 'features/authentication/repository/auth_repository.dart';
 import 'features/edit_book/repository/book_repository.dart';
-import 'features/edit_book/view/add_book/add_book_view.dart';
 import 'features/app/view/home_page_view.dart';
 
 Future<void> main() {
@@ -84,7 +83,7 @@ class AppWidget extends StatelessWidget {
       AppStatus state, List<Page<dynamic>> pages) {
     switch (state) {
       case AppStatus.authenticated:
-        return [AddBookView.page()];
+        return [Dashboard.page()];
       case AppStatus.unauthenticated:
         return [AuthView.page()];
     }

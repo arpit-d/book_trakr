@@ -5,6 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../core/styles/styles.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../edit_book/view/add_book/edit_book_view.dart';
 import '../../trending_books/view/trending_books_list_view.dart';
 import '../blocs/app_bloc/app_bloc.dart';
 
@@ -16,6 +17,10 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(EditBookView.route()),
+        child: const Icon(bookIcon),
+      ),
       //  drawer: const Drawer(),
       appBar: AppBar(
         primary: true,

@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/edit_book_bloc.dart';
 import '../../repository/book_repository.dart';
-import 'add_book_form.dart';
+import 'edit_book_form.dart';
 
-class AddBookView extends StatelessWidget {
-  const AddBookView({Key? key}) : super(key: key);
-  static Page page() => const MaterialPage<void>(child: AddBookView());
+class EditBookView extends StatelessWidget {
+  const EditBookView({Key? key}) : super(key: key);
+  static Route<void> route() {
+    return MaterialPageRoute(builder: (_) => const EditBookView());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class AddBookView extends StatelessWidget {
       body: BlocProvider(
         create: (_) =>
             EditBookBloc(bookRepository: context.read<BookRepository>()),
-        child: const AddBookForm(),
+        child: const EditBookForm(),
       ),
     );
   }

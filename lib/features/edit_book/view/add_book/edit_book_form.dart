@@ -6,8 +6,8 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../bloc/edit_book_bloc.dart';
 
-class AddBookForm extends StatelessWidget {
-  const AddBookForm({Key? key}) : super(key: key);
+class EditBookForm extends StatelessWidget {
+  const EditBookForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
