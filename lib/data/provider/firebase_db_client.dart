@@ -17,4 +17,15 @@ class FirebaseDbClient {
       .doc(user.uid)
       .collection('BooksList')
       .add(book.toMap());
+
+  Stream<List<BookModel>> getBook() {
+    return _firebaseDatabase
+        .collection("UserData")
+        .doc(user.uid)
+        .collection('BooksList')
+        .snapshots()
+        .map((event) {
+      return event.docs.map((e) => BookModel.fromMap(e.data())).toList();
+    });
+  }
 }

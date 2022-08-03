@@ -11,7 +11,7 @@ class BookModel extends Equatable {
   final String title;
   final String authors;
   final int pages;
-  final String description;
+  final String? description;
   final String isbn;
   final String userReview;
   const BookModel({
@@ -54,12 +54,12 @@ class BookModel extends Equatable {
 
   factory BookModel.fromMap(Map<String, dynamic> map) {
     return BookModel(
-      title: map['title'] as String,
-      authors: map['authors'] as String,
-      pages: map['pages'] as int,
-      description: map['description'] as String,
-      isbn: map['isbn'] as String,
-      userReview: map['userReview'] as String,
+      title: map['title'],
+      authors: map['authors'],
+      pages: map['pages'] ?? 0,
+      description: map['description'] ?? '',
+      isbn: map['isbn'],
+      userReview: map['userReview'],
     );
   }
 
@@ -77,7 +77,6 @@ class BookModel extends Equatable {
       title,
       authors,
       pages,
-      description,
       isbn,
       userReview,
     ];

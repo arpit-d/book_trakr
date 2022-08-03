@@ -1,3 +1,4 @@
+import 'package:book_tracker/features/books_overview/view/books_overview_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -19,7 +20,10 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).push(EditBookView.route()),
-        child: const Icon(bookIcon),
+        child: const Icon(
+          bookIcon,
+          color: Colors.white,
+        ),
       ),
       //  drawer: const Drawer(),
       appBar: AppBar(
@@ -63,6 +67,8 @@ class Dashboard extends StatelessWidget {
             TitleWidget(title: "Trending Books"),
             gapH12,
             TrendingBooksList(),
+            gapH12,
+            BookOverviewView(),
           ],
         ),
       ),

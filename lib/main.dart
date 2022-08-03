@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:book_tracker/features/books_overview/bloc/book_overview_bloc.dart';
+import 'package:book_tracker/features/books_overview/repository/books_overview_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +69,10 @@ class App extends StatelessWidget {
               create: (context) => BookRepository(
                   userModel: _authenticationRepository.currentUser),
             ),
+            RepositoryProvider(
+              create: (context) => BookOverviewRepository(
+                  userModel: _authenticationRepository.currentUser),
+            ),
           ],
           child: const AppWidget(),
         ),
@@ -96,9 +102,18 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Platform.isWindows
           ? const Dashboard()
-          : FlowBuilder<AppStatus>(
-              state: context.select((AppBloc bloc) => bloc.state.status),
-              onGeneratePages: onGenerateAppViewPages),
+          : MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => BookOverviewBloc(
+                      bookOverviewRepository:
+                          context.read<BookOverviewRepository>()),
+                ),
+              ],
+              child: FlowBuilder<AppStatus>(
+                  state: context.select((AppBloc bloc) => bloc.state.status),
+                  onGeneratePages: onGenerateAppViewPages),
+            ),
     );
   }
 }
