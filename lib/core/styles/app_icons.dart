@@ -6,3 +6,4 @@ const notificationBellIcon = LineAwesomeIcons.bell;
 const emailIcon = LineAwesomeIcons.envelope;
 const passwordIcon = LineAwesomeIcons.lock;
 const bookIcon = LineAwesomeIcons.book;
+const horizontalThreeDots = LineAwesomeIcons.horizontal_ellipsis;

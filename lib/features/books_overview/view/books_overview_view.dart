@@ -1,7 +1,9 @@
+import 'package:book_tracker/core/utils/gaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/book_overview_bloc.dart';
+import '../widgets/book_overview_card_widget.dart';
 
 class BookOverviewView extends StatelessWidget {
   const BookOverviewView({super.key});
@@ -17,14 +19,14 @@ class BookOverviewView extends StatelessWidget {
           if (state.books.isEmpty) {
             return const Text('No Books');
           }
-          return ListView.builder(
+          return ListView.separated(
+            separatorBuilder: (context, index) => gapH12,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: state.books.length,
             itemBuilder: (context, index) {
-              return Text(
-                state.books[index].authors,
-              );
+              final books = state.books[index];
+              return BookOverviewCard(books: books);
             },
           );
         }

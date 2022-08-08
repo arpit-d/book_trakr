@@ -21,4 +21,5 @@ class AppColors {
   static const greyLabelColor = Color(0xFF2E3033);
   static const darkGreyColor = Color(0xFF404040);
   static const lightGreyColor = Color(0xFFEDF2F3);
+  static const slightlyDarkGreyColor = Color.fromARGB(255, 108, 122, 125);
 }
